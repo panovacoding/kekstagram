@@ -1,40 +1,13 @@
-/* eslint-disable no-console */
-function getSome (a, b) {
-  return a + b;
-}
-
-const mySum = 0 + getSome(1, 2);
-console.log(mySum);
-console.log('5');
-
 // Функция взята из интернета и доработана, источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
 
 function getRandomNumber (a, b) {
-  // Чтобы не заставлять пользователя нашей функции помнить порядок аргументов,
-  // реализуем поддержку передачи минимального и максимального значения в любом порядке,
-  // а какое из них большее и меньшее вычислим с помощью Math.min и Math.max.
 
-  // После нам нужно убедиться, что пользователь не передал дробные значения,
-  // для этого на всякий пожарный случай нижнюю границу диапазона
-  // мы округляем к ближайшему большему целому с помощью Math.ceil,
-  // а верхнюю границу - к ближайшему меньшему целому с помощью Math.floor
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
-  // Обратите внимание, чтобы учесть условие, что диапазон может быть [0, ∞),
-  // мы не ругаем пользователя за переданное отрицательное число,
-  // а просто берём его по модулю с помощью Math.abs
-
-  // Дальше используем Math.random() для получения случайного дробного числа в диапазоне [0, 1),
-  // которое домножаем на разницу между переданными числами плюс единица - это будет наша случайная дельта.
-  // После нужно сложить дельту с минимальным значением, чтобы получить итоговое случайное число.
   const result = Math.random() * (upper - lower + 1) + lower;
-  // "Плюс единица", чтобы включить верхнюю границу диапазона в случайные числа
 
-  // И в конце с помощью метода Math.floor мы округляем полученный результат,
-  // потому что Math.random() генерирует только дробные числа и ноль.
   return Math.floor(result);
 }
-getRandomNumber(-10, 2);
 
 function isLenghtCorrect (message, maxLength) {
   if (message.length <= maxLength) {
@@ -43,4 +16,56 @@ function isLenghtCorrect (message, maxLength) {
   return false;
 }
 
-isLenghtCorrect('Привет', 6);
+// HomeWork 7
+
+// eslint-disable-next-line arrow-body-style
+const getRandomArrayElement = (array) => {
+  return array[getRandomNumber(0, array.length - 1)];
+};
+
+const description = [
+  ' А сегодня в завтрашний день, не все могут смотреть',
+  'Это на даче было, сейчас я дома уже',
+  'Не важно сколько дней в твоей жизни, важно сколько жизни в твоих днях',
+  'Кто знает тот поймет',
+  'Взаимные лайки и подписки',
+  'Насчет сотрудничества в ЛС',
+];
+
+const names = [
+  'Артём',
+  'Иван',
+  'Роман',
+  'Николай',
+  'Екатерина',
+  'Анна',
+  'Ольга',
+  'Юлия',
+];
+
+const messages = [
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
+];
+
+// eslint-disable-next-line arrow-body-style
+const createPhotoDescription = () => {
+  return {
+    id: getRandomNumber(1, 25),
+    url: `photos/${getRandomNumber(1, 25)}.jpg`,
+    description: getRandomArrayElement(description),
+    likes: getRandomNumber(15, 200),
+    comments: {
+      id: getRandomNumber(1, 25),
+      avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+      message: getRandomArrayElement(messages),
+      name: getRandomArrayElement(names),
+    }
+  };
+};
+
+const photoDescriprions = Array.from({length: 25}, createPhotoDescription);
