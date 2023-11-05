@@ -36,12 +36,26 @@ const createPhotoDescription = () => {
     url: `photos/${getRandomNumber(1, 25)}.jpg`,
     description: getRandomArrayElement(description),
     likes: getRandomNumber(15, 200),
-    comments: {
-      id: getRandomNumber(1, 25),
-      avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-      message: getRandomArrayElement(messages),
-      name: getRandomArrayElement(names),
-    }
+    comments: [
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+    ]
   };
 };
 
@@ -49,4 +63,5 @@ function photoDescriprions () {
   return Array.from({length: 25}, createPhotoDescription);
 }
 
-photoDescriprions();
+const data = photoDescriprions();
+export { data };
