@@ -55,6 +55,48 @@ const createPhotoDescription = () => {
         message: getRandomArrayElement(messages),
         name: getRandomArrayElement(names),
       },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
+      {
+        id: getRandomNumber(1, 25),
+        avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+        message: getRandomArrayElement(messages),
+        name: getRandomArrayElement(names),
+      },
     ]
   };
 };

@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import './../pristine/pristine.min.js';
 
 const validateForm = () => {
   const form = document.querySelector('.img-upload__overlay');
@@ -12,11 +11,13 @@ const validateForm = () => {
   imageUploader.addEventListener('change', () => {
     if(!imageUploader.value) { return; }
     form.classList.remove('hidden');
+    document.body.classList.add('modal-open');
   });
 
   const closeHandler = () => {
     form.classList.add('hidden');
     imageUploader.value = '';
+    document.body.classList.remove('modal-open');
   };
 
   formClose.addEventListener('click', closeHandler);
@@ -26,42 +27,19 @@ const validateForm = () => {
   });
 
   const formNode = document.querySelector('#upload-select-image');
-  const hashtagRegEx = new RegExp(/^[а-яёА-ЯЁa-zA-Z]\d{1, 19}$/i);
+  const re = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 
   formNode.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if(inputHashtags.value.length){
-      const splittedHashtags = inputHashtags.value.split(' ');
-      const filteredHashtags = splittedHashtags.filter((el) => el[0] === '#');
-      if(splittedHashtags.length !== filteredHashtags.length) {
-        inputHashtags.style.background = 'red';
-      } else {
-        inputHashtags.style.background = 'green';
-      }
-
-      const tagsWithoutHash = filteredHashtags.map((el) => {
-        const arr = el.split('');
-        arr.shift();
-        return arr.join('');
-      });
-
-      const validTags = tagsWithoutHash.filter((el) => {
-        el.match(hashtagRegEx);
-      });
-
-      console.log(splittedHashtags);
-      console.log(validTags);
-
-      if(splittedHashtags.length !== validTags.length){
-        inputHashtags.style.background = 'red';
-      } else {
-        inputHashtags.style.background = 'green';
-      }
+    if(inputHashtags.value){
+      const hashtags = inputHashtags.value.split(' ');
+      
+      const isValid = hashtags.every(el => re.test(el));
+      !isValid ? inputHashtags.style.background = 'red' : inputHashtags.style.background = 'green';
+    
     }
-
-  });
-
+  })
 };
 
 validateForm();
