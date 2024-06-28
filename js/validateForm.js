@@ -34,12 +34,10 @@ const validateForm = () => {
 
     if(inputHashtags.value){
       const hashtags = inputHashtags.value.split(' ');
-      
-      const isValid = hashtags.every(el => re.test(el));
+      const isValid = hashtags.every((el) => re.test(el));
       !isValid ? inputHashtags.style.background = 'red' : inputHashtags.style.background = 'green';
-    
     }
-  })
+  });
 };
 
 validateForm();
