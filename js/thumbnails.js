@@ -1,5 +1,5 @@
-import { data } from './data.js';
 import { generateBigPic } from './bigPic.js';
+import { getData } from './getData.js';
 
 const picTemplate = document.querySelector('#picture').content;
 const picContainer = document.querySelector('.pictures');
@@ -20,7 +20,11 @@ function createOtherPhotos(el) {
   });
 }
 
-data.forEach((el) => {
-  createOtherPhotos(el);
-});
+const photosHandler = (photos) => {
+  photos.forEach((photo) => {
+    createOtherPhotos(photo);
+  });
+};
+
+getData(photosHandler, alert);
 
